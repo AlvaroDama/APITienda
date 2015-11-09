@@ -7,7 +7,7 @@ using Repository.Model;
 
 namespace Repository.ViewModel
 {
-    punlic class ProductoAlmacenViewModel :IViewModel<ProductoAlmacen>
+    public class ProductoAlmacenViewModel :IViewModel<ProductoAlmacen>
     {
         public int idProducto { get; set; }
         public int idAlmacen { get; set; }

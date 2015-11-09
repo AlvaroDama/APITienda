@@ -7,24 +7,33 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Data;
+using System.Data.Entity.Core.Objects;
+using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Messaging;
+
 namespace Repository.Model
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class TiendaEntities : DbContext
     {
+       
         public TiendaEntities()
             : base("name=TiendaEntities")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
+        
+
         public virtual DbSet<Almacen> Almacen { get; set; }
         public virtual DbSet<Categoria> Categoria { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }

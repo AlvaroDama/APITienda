@@ -24,7 +24,20 @@ namespace APITienda
 
             /*Añadimos el control de los repositorios 
             (accediendo al repositorio para cada ViewModel)*/
-            container.RegisterType<IRepositorio<Almacen, AlmacenViewModel>, RepositorioTienda<Almacen, AlmacenViewModel>>();
+            container.RegisterType<IRepositorio<Almacen, AlmacenViewModel>, 
+                RepositorioTienda<Almacen, AlmacenViewModel>>();
+
+            container.RegisterType<IRepositorio<Categoria, CategoriaViewModel>, 
+                RepositorioTienda<Categoria, CategoriaViewModel>>();
+
+            container.RegisterType<IRepositorio<ProductoAlmacen, ProductoAlmacenViewModel>, 
+                RepositorioTienda<ProductoAlmacen, ProductoAlmacenViewModel>>();
+
+            container.RegisterType<IRepositorio<Producto, ProductoViewModel>, 
+                RepositorioTienda<Producto, ProductoViewModel>>();
+
+            container.RegisterType<IRepositorio<Tag, TagViewModel>, 
+                RepositorioTienda<Tag, TagViewModel>>();
 
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
