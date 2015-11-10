@@ -1,8 +1,9 @@
 using System.Data.Entity;
 using Microsoft.Practices.Unity;
 using System.Web.Http;
+using BaseRepository;
+using BaseRepository.Repository;
 using Repository.Model;
-using Repository.Repository;
 using Repository.ViewModel;
 using Unity.WebApi;
 
@@ -24,20 +25,20 @@ namespace APITienda
 
             /*Añadimos el control de los repositorios 
             (accediendo al repositorio para cada ViewModel)*/
-            container.RegisterType<IRepositorio<Almacen, AlmacenViewModel>, 
-                RepositorioTienda<Almacen, AlmacenViewModel>>();
+            container.RegisterType<IRepository<Almacen, AlmacenViewModel>, 
+                RepositoryEntity<Almacen, AlmacenViewModel>>();
 
-            container.RegisterType<IRepositorio<Categoria, CategoriaViewModel>, 
-                RepositorioTienda<Categoria, CategoriaViewModel>>();
+            container.RegisterType<IRepository<Categoria, CategoriaViewModel>, 
+                RepositoryEntity<Categoria, CategoriaViewModel>>();
 
-            container.RegisterType<IRepositorio<ProductoAlmacen, ProductoAlmacenViewModel>, 
-                RepositorioTienda<ProductoAlmacen, ProductoAlmacenViewModel>>();
+            container.RegisterType<IRepository<ProductoAlmacen, ProductoAlmacenViewModel>, 
+                RepositoryEntity<ProductoAlmacen, ProductoAlmacenViewModel>>();
 
-            container.RegisterType<IRepositorio<Producto, ProductoViewModel>, 
-                RepositorioTienda<Producto, ProductoViewModel>>();
+            container.RegisterType<IRepository<Producto, ProductoViewModel>, 
+                RepositoryEntity<Producto, ProductoViewModel>>();
 
-            container.RegisterType<IRepositorio<Tag, TagViewModel>, 
-                RepositorioTienda<Tag, TagViewModel>>();
+            container.RegisterType<IRepository<Tag, TagViewModel>, 
+                RepositoryEntity<Tag, TagViewModel>>();
 
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);

@@ -82,16 +82,18 @@
       <DependentUpon>ModelTienda.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\IRepositorio.cs" />
-    <Compile Include="Repository\RepositorioTienda.cs" />
     <Compile Include="ViewModel\AlmacenViewModel.cs" />
     <Compile Include="ViewModel\CategoriaViewModel.cs" />
-    <Compile Include="ViewModel\IViewModel.cs" />
     <Compile Include="ViewModel\ProductoAlmacenViewModel.cs" />
     <Compile Include="ViewModel\ProductoViewModel.cs" />
     <Compile Include="ViewModel\TagViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\BaseRepository\BaseRepository\BaseRepository.csproj">
+      <Project>{64117d6d-ecfb-4e28-a672-8cd953590728}</Project>
+      <Name>BaseRepository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Model\ModelTienda.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

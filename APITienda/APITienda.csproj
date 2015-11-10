@@ -135,6 +135,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\BaseRepository\BaseRepository\BaseRepository.csproj">
+      <Project>{64117d6d-ecfb-4e28-a672-8cd953590728}</Project>
+      <Name>BaseRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{1d77c612-3f4f-4361-b640-fcbb86aa4f85}</Project>
       <Name>Repository</Name>

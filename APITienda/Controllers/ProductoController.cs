@@ -4,85 +4,42 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Web.Http;
 using Repository.Model;
 using System.Web.Http.Description;
+using BaseRepository.Repository;
+using Repository.ViewModel;
 
 namespace APITienda.Controllers
 {
     public class ProductoController : ApiController
     {
-        private TiendaEntities db;
 
-       
+        public IRepository<Producto, ProductoViewModel> repo { get; set; }
 
         public ProductoController()
         {
-            db = new TiendaEntities();
-           
+            var ctx = new TiendaEntities();
+            repo = new RepositoryEntity<Producto, ProductoViewModel>(ctx);
         }
 
-        public IQueryable<Producto> Get()
+        public ICollection<ProductoViewModel> Get()
         {
-            return db.Producto;
+            return repo.Get();
         }
 
-        [ResponseType(typeof (Producto))]
-        public IHttpActionResult Post(Producto producto)
+        [ResponseType(typeof(ProductoViewModel))]
+        public IHttpActionResult Get(String id)
         {
-            db.Producto.Add(producto);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (Exception)
-            {
-                return BadRequest("Error en el alta");
-            }
-
-            return Created("ApiProductos", producto);
-
-
-        }
-
-        [ResponseType(typeof (Producto))]
-        public IHttpActionResult Put(Producto prod)
-        {
-            db.Entry(prod).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
-
-            return Ok(prod);
-        }
-
-        [ResponseType(typeof (void))]
-        public IHttpActionResult Delete(string id)
-        {
-
-            var prod = db.Producto.Find(id);
-            if (prod == null)
+            var data = repo.Get(int.Parse(id));
+            if (data == null)
                 return NotFound();
-            db.Producto.Remove(prod);
 
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
-
-            return Ok();
+            return Ok(data);
         }
+
+        
+
     }
 }
